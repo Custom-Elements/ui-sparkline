@@ -1,0 +1,33 @@
+<!doctype html>
+
+<html>
+  <head>
+    <title>ui-sparkline</title>
+    <script src="http://localhost:35729/livereload.js"></script>
+    <script src="node_modules/polymer/platform.js"></script>
+    <link rel="import" href="node_modules/polymer/polymer.html">
+    <link rel="import" href="build/ui-sparkline.html">
+    <style>
+      body {
+        font-family: "Helvetica Neue", "Helvetica", Arial;
+      }
+      #holder {
+        width: 8em;
+        height: 3em;
+      }
+    </style>
+  </head>
+  <body unresolved>
+    <div id="holder">
+      <ui-sparkline>
+      </ui-sparkline>
+    </div>
+    <script>
+      document.addEventListener('polymer-ready', function() {
+        document.querySelector('ui-sparkline').data = [
+          3, 4, 5, 10, 9.5, 8.5, 7
+          ];
+      })
+    </script>
+  </body>
+</html>
