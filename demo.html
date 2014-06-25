@@ -15,18 +15,30 @@
         width: 8em;
         height: 3em;
       }
+
+      #two {
+        display: inline-block;
+        width: 4em;
+        height: 1em;
+      }
     </style>
   </head>
   <body unresolved>
     <div id="holder">
-      <ui-sparkline>
-      </ui-sparkline>
+      <ui-sparkline id="one"></ui-sparkline>
     </div>
+    <p>
+      Let's see one inline and tiny: <ui-sparkline id="two"></ui-sparkline>
+    </p>
     <script>
       document.addEventListener('polymer-ready', function() {
-        document.querySelector('ui-sparkline').data = [
+        document.querySelector('#one').data = [
           3, 4, 5, 10, 9.5, 8.5, 7
           ];
+
+        document.querySelector('#two').data = [
+          1, 5, 5, 10, 10, 1
+        ];
       })
     </script>
   </body>
