@@ -25,20 +25,18 @@
   </head>
   <body unresolved>
     <div id="holder">
-      <ui-sparkline id="one"></ui-sparkline>
+      <ui-sparkline id="one" data="1 1 1 2 2 2 1 1 3 3 1"></ui-sparkline>
     </div>
     <p>
       Let's see one inline and tiny: <ui-sparkline id="two"></ui-sparkline>
     </p>
     <script>
       document.addEventListener('polymer-ready', function() {
-        document.querySelector('#one').data = [
-          3, 4, 5, 10, 9.5, 8.5, 7
-          ];
-
-        document.querySelector('#two').data = [
-          1, 5, 5, 10, 10, 1
-        ];
+        points = [];
+        while (points.length < 20) {
+          points.push(Math.random());
+        }
+        document.querySelector('#two').data = points;
       })
     </script>
   </body>

@@ -12,26 +12,33 @@ Inline self scaling sparkline, just feed it an array of numbers.
 This is a simple array of numbers.
 
       dataChanged: ->
+        if typeof @data is 'string'
+          @data = @data.split(' ')
+        length = @data.length
         min = _.min @data
         max = _.max @data
         range = max - min
         plot = []
+        path = []
 
 Remember that SVG has an inverted Y axis compared to how you would
 do math graphs.
 
-        _.each @data, (n, i) =>
-          if i < (@data.length - 1)
-            plot.push
-              n: n
-              x1: i / @data.length * 100
-              y1: 100 - (n - min) / range * 100
-              x2: (i + 1) / @data.length * 100
-              y2: 100 - (@data[i+1] - min) / range * 100
+        _.each @data, (n, i) ->
+          console.log n, i
+          x = i
+          y = 1 - ((n - min) / range)
+          plot.push "#{x},#{y}"
+          if i is 0
+            path.push "M #{x} #{y}"
+          else
+            path.push "L #{x} #{y}"
 
-        console.log plot
-        @$.segments.model =
-          plot: plot
+        @plot = plot.join(' ')
+        @path = path.join(' ')
+        @path = "M 0 0 L 1 1 Z"
+        @viewBox = "0 0 #{length} 1"
+        @$.spark.classList.add 'show'
 
 ##Methods
 

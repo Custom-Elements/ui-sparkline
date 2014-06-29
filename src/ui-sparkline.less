@@ -2,8 +2,31 @@
 
 :host {
   display: block;
+  overflow: hidden;
 }
 
-line {
-  stroke: @color-text;
+#plot {
+  fill: none;
+  stroke: @grey;
+  vector-effect: non-scaling-stroke;
+  stroke-width: 1;
+}
+
+#dot {
+  circle {
+    vector-effect: non-scaling-stroke;
+    stroke-width: 1;
+    stroke: @red;
+    fill: @red;
+  }
+}
+
+#spark {
+  opacity: 0;
+  .transform(translateX(-100%));
+  .transition(@transition);
+  &.show {
+    opacity: 1;
+    .transform(translateX(0%));
+  }
 }
