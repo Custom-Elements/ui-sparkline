@@ -1,17 +1,7 @@
-<polymer-element name="ui-sparkline" attributes="data plot path viewBox">
+<polymer-element name="ui-sparkline" attributes="data">
+  <section id="display"></section>
 <template>
   <link rel="stylesheet" type="text/css" href="./ui-sparkline.less">
-  <svg id="spark" viewBox="{{viewBox}}"
-    version="1.1" xmlns="http://www.w3.org/2000/svg"
-    xmlns:xlink="http://www.w3.org/1999/xlink">
-    <defs>
-      <marker id="dot" viewBox="0 0 1 1" markerWidth="1" markerHeight="1" refx=".5" refy=".5">
-            <circle r="0.2" cx=".5" cy=".5"/>
-	    </marker>
-    </defs>
-    <polyline id="plot" points="{{plot}}" marker-end="url(#dot)"></polyline>
-    </circle>
-  </svg>
 </template>
 <script src="./ui-sparkline.litcoffee"></script>
 </polymer-element>
