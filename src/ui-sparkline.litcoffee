@@ -39,8 +39,6 @@ do math graphs.
         svg.plot = plot.join(' ')
         svg.path = path.join(' ')
         svg.viewBox = "-1 -0.5 #{length+1} 2"
-        console.log @shadowRoot.querySelector 'svg'
-        console.log @shadowRoot.querySelector 'template'
 
 ##Methods
 
