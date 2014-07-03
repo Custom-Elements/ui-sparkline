@@ -5,6 +5,7 @@ Inline self scaling sparkline, just feed it an array of numbers.
     graphic = require './ui-sparkline.svg'
     bonzo = require 'bonzo'
 
+    console.log 'ui-sparkline'
     Polymer 'ui-sparkline',
 
 ##Events
@@ -26,9 +27,9 @@ This is a simple array of numbers.
 Remember that SVG has an inverted Y axis compared to how you would
 do math graphs.
 
-        _.each @data, (n, i) ->
-          x = i
-          y = 1 - ((n - min) / range)
+        _.each @data, (n, i, all) ->
+          x = i / all.length
+          y = (n - min) / range
           plot.push "#{x},#{y}"
           if i is 0
             path.push "M #{x},#{y}"
@@ -38,7 +39,7 @@ do math graphs.
         svg = @shadowRoot.querySelector('#svg')
         svg.plot = plot.join(' ')
         svg.path = path.join(' ')
-        svg.viewBox = "-1 -0.5 #{length+1} 2"
+        svg.points = @data.length
 
 ##Methods
 
