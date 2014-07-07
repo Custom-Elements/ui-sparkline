@@ -4,6 +4,8 @@ Inline self scaling sparkline, just feed it an array of numbers.
     _ = require 'lodash'
     graphic = require './ui-sparkline.svg'
     bonzo = require 'bonzo'
+    handlebars = require 'handlebars'
+    graphic = handlebars.compile(graphic)
 
     console.log 'ui-sparkline'
     Polymer 'ui-sparkline',
@@ -36,10 +38,11 @@ do math graphs.
           else
             path.push "L #{x},#{y}"
 
-        svg = @shadowRoot.querySelector('#svg')
-        svg.plot = plot.join(' ')
-        svg.path = path.join(' ')
-        svg.points = @data.length
+        bonzo(@shadowRoot.querySelector('svg')).remove()
+        bonzo(@shadowRoot).append graphic
+          plot: plot.join(' ')
+          path: path.join(' ')
+          points: @data.length
 
 ##Methods
 
@@ -55,7 +58,6 @@ So, cheerio in polymer tools doesn't handle inline svg well at all, it ends
 up not being great at the XML part. So, in it goes as text.
 
       attached: ->
-        bonzo(@shadowRoot).append "<template id='svg' is='auto-binding'>#{graphic}</template>"
 
       domReady: ->
 
