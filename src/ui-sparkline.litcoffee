@@ -7,7 +7,6 @@ Inline self scaling sparkline, just feed it an array of numbers.
     handlebars = require 'handlebars'
     graphic = handlebars.compile(graphic)
 
-    console.log 'ui-sparkline'
     Polymer 'ui-sparkline',
 
 ##Events
