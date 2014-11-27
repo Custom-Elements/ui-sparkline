@@ -3,8 +3,10 @@ Inline self scaling sparkline, just feed it an array of numbers.
 
     _ = require 'lodash'
     graphic = require './ui-sparkline.svg'
-    handlebars = require 'handlebars'
-    graphic = handlebars.compile(graphic)
+    mustache = require 'mustache'
+
+    render = (parameters) ->
+      mustache.render graphic, parameters
 
     Polymer 'ui-sparkline',
 
@@ -38,7 +40,7 @@ do math graphs.
 
         @shadowRoot.querySelector('display')?.remove()
         display = document.createElement 'display'
-        display.innerHTML = graphic
+        display.innerHTML = render
           plot: plot.join(' ')
           path: path.join(' ')
           points: @data.length
