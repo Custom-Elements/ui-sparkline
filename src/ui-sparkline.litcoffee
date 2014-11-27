@@ -3,7 +3,6 @@ Inline self scaling sparkline, just feed it an array of numbers.
 
     _ = require 'lodash'
     graphic = require './ui-sparkline.svg'
-    bonzo = require 'bonzo'
     handlebars = require 'handlebars'
     graphic = handlebars.compile(graphic)
 
@@ -37,11 +36,13 @@ do math graphs.
           else
             path.push "L #{x},#{y}"
 
-        bonzo(@shadowRoot.querySelector('svg')).remove()
-        bonzo(@shadowRoot).append graphic
+        @shadowRoot.querySelector('display')?.remove()
+        display = document.createElement 'display'
+        display.innerHTML = graphic
           plot: plot.join(' ')
           path: path.join(' ')
           points: @data.length
+        @shadowRoot.appendChild display
 
 ##Methods
 

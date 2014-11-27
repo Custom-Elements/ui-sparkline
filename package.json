@@ -2,7 +2,6 @@
   "name": "ui-sparkline",
   "version": "0.0.0",
   "dependencies": {
-    "bonzo": "^2.0.0",
     "handlebars": "^2.0.0-alpha.4",
     "lodash": "^2.4.1",
     "polymer": "git://github.com/custom-elements/polymer#master",
