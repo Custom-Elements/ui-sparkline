@@ -1,7 +1,7 @@
 #ui-sparkline
 Inline self scaling sparkline, just feed it an array of numbers.
 
-    _ = require 'lodash'
+    _ = require 'lodash-node'
     graphic = require './ui-sparkline.svg'
     mustache = require 'mustache'
 
