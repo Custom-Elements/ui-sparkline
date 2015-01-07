@@ -1,7 +1,6 @@
 #ui-sparkline
 Inline self scaling sparkline, just feed it an array of numbers.
 
-    _ = require 'lodash-node'
     graphic = require './ui-sparkline.svg'
     mustache = require 'mustache'
 
@@ -18,10 +17,15 @@ This is a simple array of numbers.
 
       dataChanged: ->
         if typeof @data is 'string'
-          @data = _.map @data.split(' '), (n) -> Number(n)
+          @data = @data.split(' ').map (n) -> Number(n)
         length = @data.length
-        min = _.min @data
-        max = _.max @data
+        min = Number.MAX_VALUE
+        max = Number.MIN_VALUE
+        @data.forEach (n) ->
+          if n < min
+            min = n
+          if n > max
+            max = n
         range = max - min
         plot = []
         path = []
@@ -29,7 +33,7 @@ This is a simple array of numbers.
 Remember that SVG has an inverted Y axis compared to how you would
 do math graphs.
 
-        _.each @data, (n, i, all) ->
+        @data.forEach (n, i, all) ->
           x = i / all.length
           y = (n - min) / range
           plot.push "#{x},#{y}"

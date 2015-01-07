@@ -2,7 +2,6 @@
   "name": "ui-sparkline",
   "version": "0.0.0",
   "dependencies": {
-    "lodash-node": "^2.4.1",
     "mustache": "^0.8.2",
     "polymer": "git://github.com/custom-elements/polymer#master",
     "polymer-serve": "git://github.com/custom-elements/polymer-serve",
